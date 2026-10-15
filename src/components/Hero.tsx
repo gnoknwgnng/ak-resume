@@ -1,86 +1,49 @@
-"use client";
+import Skyline from "./Skyline";
 
-import { motion } from "framer-motion";
-import { MoveRight } from "lucide-react";
+const facts = [["₹15 L", "government grant won"], ["2", "AI systems shipped solo"], ["1", "founder platform built"], ["1", "investment memo written"]];
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section className="relative w-full h-screen mx-auto flex flex-col justify-center items-center overflow-hidden">
-      <div className="absolute inset-0 max-w-7xl mx-auto px-6 sm:px-16 flex flex-row items-center gap-8">
-        {/* Animated tracking line */}
-        <div className="flex flex-col justify-center items-center relative h-[60%]">
-          <div className="w-6 h-6 rounded-full bg-[#00f2fe] border-4 border-[#0a0a0f] shadow-[0_0_20px_rgba(0,242,254,0.6)] z-10 animate-pulse" />
-          <div className="w-1.5 h-full bg-gradient-to-b from-[#00f2fe] via-[#a855f7] to-transparent rounded-full shadow-[0_0_15px_rgba(0,242,254,0.4)]" />
+    <header id="top" className="hero min-h-[100svh] flex flex-col justify-center pt-24 pb-16 overflow-visible">
+      <Skyline />
+      <div className="relative">
+        <div className="relative">
+          <div className="label settle"><b>01</b>Profile</div>
+          <h1 className="settle settle-1 serif mt-6 text-[clamp(2.8rem,8vw,6.2rem)] leading-[0.98] tracking-[-0.015em]">
+            Somavarapu Akash
+          </h1>
+          <p className="settle settle-2 serif italic mt-5 text-[clamp(1.45rem,3vw,2.2rem)] leading-[1.2] max-w-[34ch]">
+            I build AI systems end to end. Now I'm learning to judge which ones to back.
+          </p>
+          <p className="settle settle-3 mt-7 max-w-[36rem]">
+            Recent computer science graduate from Hyderabad. Built VC Friend, a free investor-discovery platform
+            covering 2,000+ venture firms; won a national MSME hackathon and a ₹15 lakh government grant, my first
+            direct experience of pitching and investor diligence. Looking for an analyst or associate seat at an
+            early-stage fund.
+          </p>
+          <p className="settle settle-4 mt-7 flex flex-wrap gap-x-7 gap-y-2">
+            <a className="link" href="#work">See the work</a>
+            <a className="link" href="https://vcfriend.online" target="_blank" rel="noreferrer">Open VC Friend</a>
+            <a className="link" href="mailto:somavarapuakash26@gmail.com">Email me</a>
+          </p>
         </div>
 
-        <div className="z-10 mt-5">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="mb-4"
-          >
-            <span className="text-sm md:text-md uppercase tracking-[0.2em] font-bold text-[#a855f7] px-4 py-2 rounded-full border border-[#a855f7]/30 bg-[#a855f7]/10 flex w-fit glow-effect">AI & Automation Portfolio</span>
-          </motion.div>
+      </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white text-[max(40px,5vw)] font-black leading-tight drop-shadow-2xl"
-          >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2fe] via-white to-[#a855f7]">Somavarapu Akash</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="text-gray-300 font-medium text-[max(20px,2vw)] mt-6 max-w-3xl leading-relaxed"
-          >
-            I relentlessly architect <span className="text-white font-extrabold border-b-2 border-[#00f2fe]">AI-driven solutions</span>, 
-            powerful <span className="text-[#00f2fe] font-extrabold drop-shadow-[0_0_10px_rgba(0,242,254,0.5)]">workflow automations</span>, 
-            and enterprise <span className="text-[#a855f7] font-extrabold drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">digital products</span>.
-          </motion.p>
-          
-          <motion.div 
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.8, delay: 1 }}
-             className="mt-12 max-w-lg flex items-center gap-6"
-          >
-             <a href="#about" className="inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all font-extrabold select-none group text-lg">
-               Explore My Multiverse
-               <MoveRight className="w-6 h-6 group-hover:translate-x-3 group-hover:scale-110 transition-transform duration-300" />
-             </a>
-             <a href="#contact" className="hidden sm:inline-flex items-center gap-3 glass-panel px-8 py-4 rounded-full hover:bg-white/10 hover:border-[#a855f7]/50 transition-all font-semibold select-none text-gray-300 hover:text-white text-lg border border-white/5">
-               Get In Touch
-             </a>
-          </motion.div>
-        </div>
+      <div className="relative mt-14">
+        <div className="draw h-px" style={{ background: "var(--rule)" }} />
+        <dl className="settle settle-4 grid grid-cols-2 sm:grid-cols-4 gap-y-4 py-4">
+          {facts.map(([n, t]) => (
+            <div key={t}>
+              <dd className="serif text-[1.8rem] leading-none" style={{ color: "var(--accent)" }}>{n}</dd>
+              <dt className="mono mt-1.5 uppercase tracking-[0.08em]" style={{ color: "var(--ink-soft)" }}>{t}</dt>
+            </div>
+          ))}
+        </dl>
+        <div className="draw h-px" style={{ background: "var(--rule)" }} />
       </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute xs:bottom-10 bottom-16 w-full flex justify-center items-center pt-8 z-10">
-        <a href="#about">
-          <div className="w-[40px] h-[75px] rounded-full border-4 border-[#00f2fe]/50 flex justify-center items-start p-2 hover:border-[#00f2fe] transition-colors bg-[#050510]/50 backdrop-blur-sm">
-            <motion.div
-              animate={{
-                y: [0, 28, 0],
-                opacity: [1, 0.5, 1]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "loop",
-                ease: "easeInOut"
-              }}
-              className="w-4 h-4 rounded-full bg-[#00f2fe] mb-1 shadow-[0_0_15px_rgba(0,242,254,0.8)]"
-            />
-          </div>
-        </a>
-      </div>
-    </section>
+
+      <a href="#research" aria-label="Scroll to research" className="relative mono nudge mt-10 w-fit" style={{ color: "var(--ink-soft)" }}>↓ scroll</a>
+    </header>
   );
-};
-
-export default Hero;
+}
